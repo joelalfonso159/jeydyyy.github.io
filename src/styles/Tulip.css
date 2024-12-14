@@ -1,0 +1,110 @@
+.tulip {
+  position: absolute;
+  left: var(--x);
+  bottom: var(--y);
+  animation: sway 4s ease-in-out infinite;
+  animation-delay: var(--delay);
+  transform-origin: bottom center;
+  transform: scale(var(--size, 1));
+  filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.3));
+}
+
+.stem {
+  width: 4px;
+  height: 120px;
+  background: linear-gradient(to top, #228B22, #32CD32);
+  position: relative;
+  transform-origin: bottom center;
+  animation: stemSway 4s ease-in-out infinite;
+}
+
+.leaf {
+  width: 25px;
+  height: 45px;
+  background: linear-gradient(45deg, #228B22, #32CD32);
+  position: absolute;
+  border-radius: 0 50% 50% 0;
+  transform-origin: bottom left;
+  animation: leafRustle 3s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.left-leaf {
+  transform: rotate(-35deg);
+  left: -20px;
+  top: 50px;
+}
+
+.right-leaf {
+  transform: rotate(35deg) scaleX(-1);
+  right: -20px;
+  top: 70px;
+}
+
+.petals {
+  position: absolute;
+  top: -35px;
+  left: -15px;
+  transform-origin: bottom center;
+  animation: bloom 5s ease-in-out infinite;
+  animation-delay: calc(var(--delay) + 0.5s);
+  filter: drop-shadow(0 0 8px rgba(255, 20, 147, 0.2));
+}
+
+.petal {
+  width: 35px;
+  height: 45px;
+  background: linear-gradient(45deg, var(--color), rgba(255, 255, 255, 0.8));
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+  animation: petalWave 4s ease-in-out infinite;
+  backdrop-filter: blur(5px);
+}
+
+.petal:nth-child(1) { transform: rotate(-35deg); }
+.petal:nth-child(2) { transform: rotate(0deg); }
+.petal:nth-child(3) { transform: rotate(35deg); }
+
+.center-petal {
+  width: 18px;
+  height: 25px;
+  background: radial-gradient(circle at center, var(--color), rgba(255, 255, 255, 0.8));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: brightness(0.9);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(calc(-1 * var(--rotation-range))) scale(var(--size)); }
+  50% { transform: rotate(var(--rotation-range)) scale(calc(var(--size) * 1.05)); }
+}
+
+@keyframes stemSway {
+  0%, 100% { transform: skewX(-8deg); }
+  50% { transform: skewX(8deg); }
+}
+
+@keyframes leafRustle {
+  0%, 100% { transform: rotate(-35deg) scale(1); }
+  50% { transform: rotate(-30deg) scale(1.1); }
+}
+
+@keyframes bloom {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.15) rotate(5deg); }
+}
+
+@keyframes petalWave {
+  0%, 100% { transform: rotate(var(--rotation)) scale(1); }
+  50% { transform: rotate(calc(var(--rotation) + 8deg)) scale(1.1); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(0.9) blur(0px); }
+  50% { filter: brightness(1.2) blur(1px); }
+}

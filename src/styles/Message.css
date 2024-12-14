@@ -1,0 +1,70 @@
+.message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #FF1493;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 2s ease-in-out;
+  z-index: 100;
+}
+
+.message h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Dancing Script', cursive;
+  background: linear-gradient(45deg, #FF1493, #FF69B4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.love-text {
+  font-size: 2rem;
+  font-family: 'Dancing Script', cursive;
+  color: #FF1493;
+  opacity: 0;
+  animation: fadeInText 2s ease-in-out forwards 1s;
+}
+
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.sparkles::before {
+  content: '✨';
+  position: absolute;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(0); 
+  }
+}
+
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+}
